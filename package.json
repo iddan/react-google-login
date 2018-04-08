@@ -1,0 +1,59 @@
+{
+  "name": "@iddan/react-google-login",
+  "version": "0.1.0",
+  "description": "Get users into your apps quickly and securely, using a registration system they already use and trust -- their Google account with React",
+  "author": "Iddan Aaronsohn <mail@aniddan.com> (https://aniddan.com)",
+  "keywords": [
+    "google",
+    "login",
+    "signin",
+    "react",
+    "web"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "NODE_ENV=development yarn storybook",
+    "build": "rm dist/*; flow gen-flow-files src --out-dir dist; babel src --out-dir dist --copy-files",
+    "prepublish": "NODE_ENV=production yarn build",
+    "storybook": "start-storybook -p 6006",
+    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "classnames": "2.2.5",
+    "clipboard-polyfill": "^2.4.6",
+    "create-react-context": "^0.2.1",
+    "unistore": "^3.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@storybook/addon-actions": "^3.4.0",
+    "@storybook/addon-links": "^3.4.0",
+    "@storybook/addons": "^3.4.0",
+    "@storybook/react": "^3.4.0",
+    "@storybook/storybook-deployer": "^2.3.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-react-app": "^4.0.0-next.b2fd8db8",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^4.16.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.41.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "flow-bin": "0.68",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iddan/react-google-login.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iddan/react-google-login/issues"
+  },
+  "homepage": "https://github.com/iddan/react-google-login#readme"
+}
