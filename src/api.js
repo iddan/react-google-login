@@ -4,7 +4,7 @@ import "../ext/google";
 
 const { gapi } = window;
 
-type ClientConfig = (
+export type ClientConfig = (
   | { fetch_basic_profile: false, scope: string }
   | { scope?: string, fetch_basic_profile?: true }
 ) & {
@@ -16,7 +16,7 @@ type ClientConfig = (
   ux_mode?: "redirect", redirect_uri?: string
 };
 
-type Init = {|
+export type InitParams = {|
   /** The app's client ID, found and created in the Google Developers Console. */
   clientId: $PropertyType<ClientConfig, "client_id">,
   /** The domains for which to create sign-in cookies. Either a URI, single_host_origin, or none. Defaults to single_host_origin if unspecified. */
@@ -35,7 +35,7 @@ type Init = {|
   redirectURI?: $PropertyType<ClientConfig, "redirect_uri">
 |};
 
-interface BaseProfile {
+export interface BaseProfile {
   getEmail(): string;
   getFamilyName(): string;
   getGivenName(): string;
@@ -43,7 +43,7 @@ interface BaseProfile {
   getImageUrl(): string;
 }
 
-interface AuthResponse {
+export interface AuthResponse {
   access_token: string;
   id_token: string;
   scope: string;
@@ -66,7 +66,7 @@ export interface GoogleUser {
   disconnect(): void;
 }
 
-interface CurrentUser {
+export interface CurrentUser {
   listen((googleUser: GoogleUser) => void): void;
 }
 
@@ -82,7 +82,7 @@ export interface Auth2 {
 
 export const Auth: {
   instance: AuthInstance | null,
-  init: Init => Promise<AuthInstance>
+  init: (params: InitParams) => Promise<AuthInstance>
 } = {
   instance: null,
   // DON'T USE ASYNC AWAIT HERE https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams
