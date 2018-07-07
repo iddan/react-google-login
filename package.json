@@ -1,6 +1,6 @@
 {
   "name": "@iddan/react-google-login",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Get users into your apps quickly and securely, using a registration system they already use and trust -- their Google account with React",
   "author": "Iddan Aaronsohn <mail@aniddan.com> (https://aniddan.com)",
   "keywords": [
