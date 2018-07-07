@@ -1,8 +1,7 @@
 // @flow
 
 import "../ext/google";
-
-const { gapi } = window;
+import googlePlatform from "./googlePlatform";
 
 export type ClientConfig = (
   | { fetch_basic_profile: false, scope: string }
@@ -13,7 +12,8 @@ export type ClientConfig = (
   cookie_policy?: "single_host_origin" | "none" | string,
   openid_realm?: string,
   ux_mode?: "popup",
-  ux_mode?: "redirect", redirect_uri?: string
+  ux_mode?: "redirect",
+  redirect_uri?: string
 };
 
 export type InitParams = {|
@@ -97,20 +97,22 @@ export const Auth: {
     redirectURI
   }) {
     return new Promise(resolve => {
-      gapi.load("client:auth2", () => {
-        gapi.client.init({}).then(() => {
-          const instance = gapi.auth2.init({
-            scope: scope,
-            client_id: clientId,
-            fetch_basic_profile: fetchBasicProfile,
-            hosted_domain: hostedDomain,
-            cookie_policy: cookiePolicy,
-            openid_realm: openIDRealm,
-            ux_mode: uxMode,
-            redirect_uri: redirectURI
+      googlePlatform.then(gapi => {
+        gapi.load("client:auth2", () => {
+          gapi.client.init({}).then(() => {
+            const instance = gapi.auth2.init({
+              scope: scope,
+              client_id: clientId,
+              fetch_basic_profile: fetchBasicProfile,
+              hosted_domain: hostedDomain,
+              cookie_policy: cookiePolicy,
+              openid_realm: openIDRealm,
+              ux_mode: uxMode,
+              redirect_uri: redirectURI
+            });
+            resolve(instance);
+            this.instance = instance;
           });
-          resolve(instance);
-          this.instance = instance;
         });
       });
     });

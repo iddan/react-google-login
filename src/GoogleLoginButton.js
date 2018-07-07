@@ -2,9 +2,7 @@
 
 import React, { PureComponent } from "react";
 import type { AuthInstance, GoogleUser } from "./api";
-import "../ext/google";
-
-const { gapi } = window;
+import googlePlatform from "./googlePlatform";
 
 type SignIn2Options = {
   scope: string,
@@ -34,7 +32,7 @@ type Props = {
 export default class GoogleLoginButton extends PureComponent<Props> {
   id = `google-button-${Math.random().toString(32)}`;
 
-  componentDidMount() {
+  async componentDidMount() {
     const {
       scope,
       width,
@@ -45,6 +43,7 @@ export default class GoogleLoginButton extends PureComponent<Props> {
       onFailure,
       authInstance
     } = this.props;
+    const gapi = await googlePlatform;
     gapi.load("client:signin2", () => {
       const signin2: SignIn2 = gapi.signin2;
       authInstance.then(({ currentUser }) => {
