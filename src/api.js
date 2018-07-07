@@ -1,6 +1,5 @@
 // @flow
 
-import "../ext/google";
 import googlePlatform from "./googlePlatform";
 
 export type ClientConfig = (

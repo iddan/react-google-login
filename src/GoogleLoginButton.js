@@ -32,7 +32,7 @@ type Props = {
 export default class GoogleLoginButton extends PureComponent<Props> {
   id = `google-button-${Math.random().toString(32)}`;
 
-  async componentDidMount() {
+  componentDidMount() {
     const {
       scope,
       width,
@@ -43,23 +43,24 @@ export default class GoogleLoginButton extends PureComponent<Props> {
       onFailure,
       authInstance
     } = this.props;
-    const gapi = await googlePlatform;
-    gapi.load("client:signin2", () => {
-      const signin2: SignIn2 = gapi.signin2;
-      authInstance.then(({ currentUser }) => {
-        currentUser.listen((user: GoogleUser) => {
-          if (user.isSignedIn() && onSuccess) {
-            onSuccess(user);
-          }
-        });
-        signin2.render(this.id, {
-          scope,
-          width,
-          height,
-          longtitle,
-          theme,
-          onsuccess: onSuccess,
-          onfailure: onFailure
+    googlePlatform.then(gapi => {
+      gapi.load("client:signin2", () => {
+        const signin2: SignIn2 = gapi.signin2;
+        authInstance.then(({ currentUser }) => {
+          currentUser.listen((user: GoogleUser) => {
+            if (user.isSignedIn() && onSuccess) {
+              onSuccess(user);
+            }
+          });
+          signin2.render(this.id, {
+            scope,
+            width,
+            height,
+            longtitle,
+            theme,
+            onsuccess: onSuccess,
+            onfailure: onFailure
+          });
         });
       });
     });
