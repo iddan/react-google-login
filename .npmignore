@@ -60,10 +60,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# Source files
-
-src/
-
 # Storybook
 
 .storybook/
