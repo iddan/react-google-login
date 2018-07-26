@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import type { AuthInstance, GoogleUser } from "./api";
 import googlePlatform from "./googlePlatform";
 
-type SignIn2Options = {
+type SignIn2Options = {|
   scope: string,
   width: number,
   height: number,
@@ -12,7 +12,7 @@ type SignIn2Options = {
   theme: "lignt" | "dark",
   onsuccess: (googleUser: GoogleUser) => void,
   onfailure: () => void
-};
+|};
 
 interface SignIn2 {
   render(id: string, options?: $Shape<SignIn2Options>): void;
