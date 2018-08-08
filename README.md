@@ -33,6 +33,8 @@ const authInstance = Auth.init({
 />
 ```
 
+[Obtain a Google Client ID](https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin)
+
 ### Prior Art
 
   * [react-google-login](https://www.npmjs.com/package/react-google-login)
