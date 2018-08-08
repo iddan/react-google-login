@@ -11,6 +11,7 @@ _or_
 ```bash
 yarn add @iddan/react-google-login
 ```
+* Get yourself a [GOOGLE_CLIENT_ID](https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin)
 
 ### Features
 
