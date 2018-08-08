@@ -21,7 +21,7 @@ yarn add @iddan/react-google-login
 ### Usage
 
 ```javascript
-import GoogleLoginButton, { Auth } from 'react-google-login';
+import GoogleLoginButton, { Auth } from '@iddan/react-google-login';
 
 const authInstance = Auth.init({
   clientId: GOOGLE_CLIENT_ID
